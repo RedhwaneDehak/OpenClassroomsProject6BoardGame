@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="openclassrooms game project 6">
+    <meta name="keywords" content="game, coding, web development , openclassrooms">
+    <meta name="author" content="Redhwane Dehak">
+    <title>Game Project Openclassrooms </title>
+
+    <link rel="icon" type="img/png" href="img/favicon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300,400,500,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+</head>
+
+<body id="demo" data-theme="dark">
+
+
+    <div class="text-center">
+
+        <button type="button" class="btn btn-left btn-custom btn-lg" onclick="location.reload();">New
+            <span style="color: red"><i class="fas fa-sync-alt"></i></span>
+            Game</button>
+
+    </div>
+
+
+    <!-- darl light mode -->
+    <div class="container text-center mt-3">
+        <i class="fas fa-sun fa-3x theme_icon"></i>
+    </div>
+    <!-- end of darl light mode -->
+    <div class="container text-center p-4">
+
+
+        <h1 class="" id="page-header" style="color: #fdf1d2">
+            <span>
+                <img src="img/player1.png" class="img-fluid header-img   " alt="" height="70" width="70"> </span>
+
+            Hungry Bears
+
+            <span>
+                <img src="img/player2.png" class="img-fluid header-img   " alt="" height="70" width="70"> </span>
+
+        </h1>
+
+        <!--	Start screen	-->
+        <div class="p-5" id="start-screen-wrapper">
+            <div id="start-screen">
+
+                <section>
+
+                    <div>
+
+                        <h4 class="text-left" style="color: white" id="exampleModalLabel">Game Rules:</h4>
+
+                        <div class=" text-left">
+
+
+                            <p>For each turn, a player can move a maximum of 3 spaces horizontally or vertically before ending their turn. They obviously can not pass through obstacles directly.</p>
+                            <p>If player passes over a box containing a heart <span style="color: red; font-weight: bold;">Heart
+                                    <img src="img/heart.gif" alt="..." class="img-rounded btn-img" height="30" width="30" id="btn-player1">
+                                </span>, his health will be increased.</p>
+                            <p>If a player passes over a box containing a weapon, they leave their current weapon on site and replace it with the new one.</p>
+                            <p>If players cross over adjacent squares (horizontally or vertically), a battle begins.</p>
+
+                            <p class="text-center" style="color: red">Begin the battle between two players...</p>
+                            <p class="my-1 "> When the battle between two players begin: </p>
+                            <p class="my-1 p-rules px-1"> Each player must plays in turn.
+
+                            <p class="my-1 p-rules px-1"> The player can choose to <span style="color: red ; font-weight: bold;">
+                                    Attack
+                                    <img src="img/attack-img.png" alt="..." class="img-rounded btn-img" height="30" width="30" id="btn-player1">
+                                </span>
+                                or <span style="color: green; font-weight: bold;">Defend
+                                    <img src="img/defend-img.png" alt="..." class="img-rounded btn-img" height="30" width="30" id="btn-player1">
+                                </span> against the next shot. </p>
+                            <p class="my-1 p-rules px-1"> The damage depends on the player's weapon. </p>
+                            <p class="my-1 p-rules px-1"> If the player chooses to defend themselves, they sustain 50% less damage than normal. </p>
+                            <p class="my-1 p-rules px-1"> As soon as the life points of a player (initially 100) falls to 0, they lose. A message appears and the
+                                game is over.</p>
+                            <p style="color: white">Good Luck!</p>
+                        </div>
+
+
+                    </div>
+                </section>
+
+
+                <div id="start-button-container">
+                    <button class="" id="start-button" type="button">
+                        <i class="fas fa-play"></i>
+
+
+                        Start Game</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <!--	Game screen	-->
+    <div id="game-wrapper" class="">
+        <div id="player-1-data-div">
+            <div class="player-data-div-content">
+                <div class="player-number "> Player1</div>
+                <div class="player-name"></div>
+                <div class="player-picture"></div>
+                <div class="player-health py-2" style="color: red">
+                    <div class="player-health-title">
+                        <i class="fas fa-heartbeat"></i>
+
+                        Health:
+                    </div>
+                    <div class="player-health-value"></div>
+                </div>
+                <div class="player-weapon-title">Food</div>
+                <div class="player-weapon-picture"></div>
+                <div class="player-weapon-name"></div>
+                <div class="player-weapon-damage py-2" style="color: red">
+                    <div class="player-weapon-damage-title">
+                        <i class="fas fa-heart-broken"></i>
+                        Damage:
+                    </div>
+                    <div class="player-weapon-damage-value"></div>
+                </div>
+                <div class="messages">
+                    <div class="turn-message" style="color: green"></div>
+                    <!--<div class="fight-message"></div>  -->
+                </div>
+                <!--<div class="buttons">
+						<button class="button-attack" type="button">Attack</button>
+						<button class="button-defend" type="button">Defend</button>
+					</div>  -->
+
+                <div class="buttons ">
+                    <button type="button" value="Attack" class="button-attack m-1 py-1 px-2" id="player1Att">Attack
+
+                        <!--<img src="img/attack-img.png"class="" height="25" width="25">Attack -->
+
+                    </button>
+
+
+                    <button type="button" value="Defend" class="button-defend m-1 py-1 px-2" id="player1Def">Defend
+
+                        <!-- <img src="img/defend-img.png"class="" height="25" width="25">Defend  -->
+                    </button>
+                </div>
+
+                <!-- test attack defend btn-->
+
+
+
+
+
+
+            </div>
+        </div>
+        <div id="board-wrapper"></div>
+        <div id="player-2-data-div">
+            <div class="player-data-div-content">
+                <div class="player-number"> Player2</div>
+                <div class="player-name"></div>
+                <div class="player-picture"></div>
+                <div class="player-health py-2">
+                    <div class="player-health-title" style="color: red">
+                        <i class="fas fa-heartbeat"></i>
+                        Health:
+                    </div>
+
+                    <div class="player-health-value" style="color: red"></div>
+                </div>
+                <div class="player-weapon-title">Food</div>
+                <div class="player-weapon-picture"></div>
+                <div class="player-weapon-name"></div>
+                <div class="player-weapon-damage py-2" style="color: red">
+                    <div class="player-weapon-damage-title">
+                        <i class="fas fa-heart-broken"></i>
+                        Damage:
+                    </div>
+                    <div class="player-weapon-damage-value"></div>
+                </div>
+                <div class="messages">
+                    <div class="turn-message" style="color: green"></div>
+                    <!--<div class="fight-message"></div>  -->
+                </div>
+
+                <div class="buttons">
+                    <button type="button" value="Attack" class="button-attack m-1 py-1 px-2" id="player1Att">Attack
+                    </button>
+
+
+                    <button type="button" value="Defend" class="button-defend m-1 py-1 px-2" id="player1Def">Defend
+                    </button>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <!--	Battle begins message	-->
+    <div id="start-battle-message-wrapper" class="">
+        <h1 class="py-2">Fight begins !!! </h1>
+        <span style="color: red ; font-weight: bold;">
+            <img src="img/attack-img.png" alt="..." class="img-rounded btn-img" height="30" width="30" id="btn-player1"> </span>
+        <span style="color: red ; font-weight: bold;">
+
+            <img src="img/defend-img.png" alt="..." class="img-rounded btn-img" height="30" width="30" id="btn-player1">
+        </span>
+        <br>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <!--	Game over message	-->
+    <div id="game-over-wrapper" class=" px-2">
+        <div id="game-over">
+            <div>
+                <h2>The Game is over !</h2>
+            </div>
+            <div>
+                <h3>The winner is :</h3>
+            </div>
+            <div class="player-number"></div>
+            <div class="player-name"></div>
+            <div class="player-picture"></div>
+            <div id="play-again-button-container">
+                <button id="play-again-button" type="button">
+                    <i class="fas fa-play"></i>
+                    Play Again</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- jQuery script CDN-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!--	Global variables	-->
+    <script src="js/variables.js"></script>
+
+    <!--	Obstacle object constructor function	-->
+    <script src="js/obstacle.js"></script>
+
+    <!--	Energy object constructor function	-->
+    <script src="js/energy.js"></script>
+
+    <!--	Weapon object constructor function	-->
+    <script src="js/weapon.js"></script>
+
+    <!--	Player object constructor function	-->
+    <script src="js/player.js"></script>
+
+    <!-- Game object -->
+    <script src="js/game.js"></script>
+
+    <!--	Main script	-->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
