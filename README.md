@@ -31,4 +31,4 @@ turn-based board game
  * If the player chooses to defend themselves, they sustain 50% less damage than normal.
  * As soon as the life points of a player (initially 100) falls to 0, the game is over.
 
-# To see project online click the link below:
+# To see project online click the link below:https://redhwanedehak.github.io/OpenClassroomsProject6BoardGame/
