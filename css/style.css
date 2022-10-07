@@ -1,17 +1,13 @@
 body {
-    font-family: 'RocknRoll One', sans-serif;
-
+    font-family: "RocknRoll One", sans-serif;
 }
-
 
 a:hover {
     text-decoration: none;
 }
 
-
-
 :root {
-    --light: #87CEFA;
+    --light: #87cefa;
     --dark: #20232d;
 }
 
@@ -21,7 +17,7 @@ body {
 }
 
 body[data-theme="light"] {
-    --dark: #87CEFA;
+    --dark: #87cefa;
     --light: #20232d;
 }
 
@@ -41,8 +37,6 @@ body[data-theme="light"] {
     background: var(--dark);
 }
 
-
-
 .theme_icon {
     color: var(--light);
     cursor: pointer;
@@ -57,11 +51,9 @@ body[data-theme="light"] {
     transform: rotate(360deg) !important;
 }
 
-.btn {}
-
 .btn-left {
     color: #000 !important;
-    font-family: 'RocknRoll One', sans-serif;
+    font-family: "RocknRoll One", sans-serif;
     font-size: 20px;
     background-color: #fdf1d2 !important;
     text-transform: uppercase;
@@ -79,12 +71,8 @@ body[data-theme="light"] {
     background-color: green !important;
 }
 
-
-
-
-
 #start-screen-wrapper {
-    background-color: #2D3138;
+    background-color: #2d3138;
     border-radius: 20px;
     color: white;
     background-size: 100% 100%;
@@ -94,27 +82,18 @@ body[data-theme="light"] {
     align-items: center;
     font-weight: 400;
 }
-
-#start-screen {}
 
 .modalRules .modal-content {
-    font-family: 'RocknRoll One', sans-serif;
-    background-color: #2D3138;
+    font-family: "RocknRoll One", sans-serif;
+    background-color: #2d3138;
     border-radius: 20px;
     color: white;
     background-size: 100% 100%;
-
     margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 400;
-}
-
-.modal-body {}
-
-.modal-body .p-rules {
-    /*border-left: 3px solid #fff;*/
 }
 
 .p-rules:before,
@@ -152,17 +131,14 @@ body[data-theme="light"] {
 
 #start-button i,
 #play-again-button i {
-
     font-size: 18px;
 }
 
 #start-button:hover,
 #play-again-button:hover {
     background-color: green;
-    transform: scale(1.1) perspective(1px)
+    transform: scale(1.1) perspective(1px);
 }
-
-
 
 #game-wrapper {
     margin: auto;
@@ -179,7 +155,6 @@ body[data-theme="light"] {
     align-items: center;
     background-color: green;
     background-size: 100% 100%;
-
 }
 
 #player-1-data-div,
@@ -208,7 +183,6 @@ table {
     border-spacing: 0;
     background-image: url("../img/board_background.png");
     background-size: 100% 100%;
-
 }
 
 td {
@@ -232,10 +206,9 @@ td {
     background-size: 100% 100%;
 }
 
-
 .berries {
     background-image: url("../img/berries.png");
-    background-color: rgba(137, 85, 56, .7);
+    background-color: rgba(137, 85, 56, 0.7);
     background-size: 100% 100%;
 }
 
@@ -246,11 +219,9 @@ td {
 
 .fish {
     background-image: url("../img/fish2.png");
-    background-color: #30A7FB;
+    background-color: #30a7fb;
     background-size: 100% 100%;
 }
-
-
 
 .player1 {
     background-image: url("../img/player1.png");
@@ -262,31 +233,14 @@ td {
     background-size: 100% 100%;
 }
 
-.player1.flip-image {
-    -webkit-transform: scaleX(-1);
-    -ms-transform: scaleX(-1);
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    transform: scaleX(-1);
-}
-
-.player2.flip-image {
-    -webkit-transform: scaleX(-1);
-    -ms-transform: scaleX(-1);
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    transform: scaleX(-1);
-}
-
-.highlighted {
+.box-range {
     background-color: white;
     opacity: 0.5;
-
 }
 
-.highlighted:hover {
+.box-range:hover {
     background-color: yellow;
-    opacity: 0.3;
+    opacity: 0.9;
 }
 
 .player-number {
@@ -296,7 +250,7 @@ td {
 }
 
 .player-name {
-    font-family: 'RocknRoll One', sans-serif;
+    font-family: "RocknRoll One", sans-serif;
     font-size: 24px;
     margin-bottom: 3px;
 }
@@ -326,7 +280,7 @@ td {
 }
 
 .player-weapon-name {
-    font-family: 'RocknRoll One', sans-serif;
+    font-family: "RocknRoll One", sans-serif;
     font-size: 23px;
     text-transform: capitalize;
 }
@@ -345,7 +299,6 @@ td {
     align-self: center;
     display: flex;
     flex-direction: column;
-
 }
 
 .turn-message {
@@ -356,14 +309,10 @@ td {
     height: 70px;
     padding: 5px;
     font-size: 24px;
-
 }
 
-
 .btn {
-
     font-size: 25px;
-
     font-weight: bold;
     border: none;
     color: #000 !important;
@@ -430,10 +379,6 @@ button:focus {
     color: red;
 }
 
-
-
-#start-battle-message h1 {}
-
 #game-over-wrapper {
     display: flex;
     justify-content: center;
@@ -466,7 +411,6 @@ button:focus {
 }
 
 #game-over h2 {
-
     margin: 10px 0px;
 }
 

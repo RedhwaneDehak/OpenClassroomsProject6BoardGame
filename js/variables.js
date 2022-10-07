@@ -1,4 +1,4 @@
-// Global variables
+// all variables
 var gridXFields = 10;
 var gridYFields = 10;
 var numberOfObstacles = 10;
@@ -9,7 +9,6 @@ var grass;
 var berries;
 var honey;
 var fish;
-var spear;
 var player1;
 var player2;
 var activePlayer = "player1";
@@ -27,7 +26,6 @@ var fight = false;
 var damage;
 var player1Defend = false;
 var player2Defend = false;
-
 var startScreenWrapperElem = $("#start-screen-wrapper");
 var startButtonElem = $("#start-button");
 var gameWrapperElem = $("#game-wrapper");

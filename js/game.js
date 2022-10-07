@@ -1,41 +1,6 @@
-/* dark light mode */
-
-$(document).ready(function () {
-
-    $(".theme_icon").on('click', function () {
-        $(".theme_icon").toggleClass("flip");
-        $(".theme_icon").toggleClass("fa-sun");
-        $(".theme_icon").toggleClass("fa-moon");
-
-        let current_theme = $("body").attr("data-theme");
-
-        if (current_theme == "dark") {
-            $("body").attr("data-theme", "light");
-        } else if (current_theme == "light") {
-            $("body").attr("data-theme", "dark");
-        }
-    });
-
-});
-
-
-/* btn rules and refresh */
-
-$('#rulesBtn').on('click', function () {
-    $('.modalRules').css('display', 'block');
-    closeModalOnOutsideClick();
-
-});
-
-$('#closeBtnRules').on('click', function () {
-    $('.modalRules').css('display', 'none');
-});
-
-
 // Game object
 
 var Game = {
-
     gridAvailableFields: [],
 
     playerMovementFields: [],
@@ -89,7 +54,7 @@ var Game = {
         boardWrapperElem.appendChild(table);
     },
 
-    // Creating obstacle object and placing obstacles on a game board
+    // Creating obstacle object and placing obstacles on the game board
     createObstacles: function () {
         var tree = new Obstacle("tree", "obstacle");
         for (var i = 1; i <= numberOfObstacles; i++) {
@@ -97,7 +62,7 @@ var Game = {
         }
     },
 
-    // Creating energy object and placing energies on a game board
+    // Creating energy object and placing energies on the game board
     createEnergies: function () {
         var energy = new Energy("heart", "energy");
         for (var i = 1; i <= numberOfEnergies; i++) {
@@ -105,7 +70,7 @@ var Game = {
         }
     },
 
-    // Creating weapons objects and placing weapons on a game board
+    // Creating weapons objects and placing weapons on the game board
     createWeapons: function () {
         grass = new Weapon("grass", "weapon", 10, "img/grass.png");
         berries = new Weapon("berries", "weapon", 20, "img/berries.png");
@@ -132,15 +97,21 @@ var Game = {
             var index = Game.getRandomNumber(Game.gridAvailableFields.length);
             switch (item.type) {
                 case "obstacle":
-                    var condition = Game.gridAvailableFields[index][0] !== 1 && Game.gridAvailableFields[index][0] !== gridXFields;
+                    var condition =
+                        Game.gridAvailableFields[index][0] !== 1 &&
+                        Game.gridAvailableFields[index][0] !== gridXFields;
                     var cssClassName = item.type;
                     break;
                 case "energy":
-                    var condition = Game.gridAvailableFields[index][0] !== 1 && Game.gridAvailableFields[index][0] !== gridXFields;
+                    var condition =
+                        Game.gridAvailableFields[index][0] !== 1 &&
+                        Game.gridAvailableFields[index][0] !== gridXFields;
                     var cssClassName = item.type;
                     break;
                 case "weapon":
-                    var condition = Game.gridAvailableFields[index][0] !== 1 && Game.gridAvailableFields[index][0] !== gridXFields;
+                    var condition =
+                        Game.gridAvailableFields[index][0] !== 1 &&
+                        Game.gridAvailableFields[index][0] !== gridXFields;
                     var cssClassName = item.type;
                     var cssClassName2 = item.name;
                     break;
@@ -173,16 +144,20 @@ var Game = {
     setPlayersData: function () {
         // Player 1 Data
         player1NameElem.text(player1.name);
-        player1PictureElem.html("<img src=\"img/player1.png\">");
+        player1PictureElem.html('<img src="img/player1.png">');
         player1HealthValueElem.text(player1.health);
-        player1WeaponPictureElem.html("<img src=" + player1.weapon.pictureUrl + ">");
+        player1WeaponPictureElem.html(
+            "<img src=" + player1.weapon.pictureUrl + ">"
+        );
         player1WeaponNameElem.text(player1.weapon.name);
         player1WeaponDamageValueElem.text(player1.weapon.damage);
         // Player 2 Data
         player2NameElem.text(player2.name);
-        player2PictureElem.html("<img src=\"img/player2.png\">");
+        player2PictureElem.html('<img src="img/player2.png">');
         player2HealthValueElem.text(player2.health);
-        player2WeaponPictureElem.html("<img src=" + player2.weapon.pictureUrl + ">");
+        player2WeaponPictureElem.html(
+            "<img src=" + player2.weapon.pictureUrl + ">"
+        );
         player2WeaponNameElem.text(player2.weapon.name);
         player2WeaponDamageValueElem.text(player1.weapon.damage);
     },
@@ -190,11 +165,15 @@ var Game = {
     // Updating player data div when player collects new weapon
     updatePlayerWeaponData: function (activePlayer) {
         if (activePlayer === "player1") {
-            player1WeaponPictureElem.html("<img src=" + player1.weapon.pictureUrl + ">");
+            player1WeaponPictureElem.html(
+                "<img src=" + player1.weapon.pictureUrl + ">"
+            );
             player1WeaponNameElem.text(player1.weapon.name);
             player1WeaponDamageValueElem.text(player1.weapon.damage);
         } else {
-            player2WeaponPictureElem.html("<img src=" + player2.weapon.pictureUrl + ">");
+            player2WeaponPictureElem.html(
+                "<img src=" + player2.weapon.pictureUrl + ">"
+            );
             player2WeaponNameElem.text(player2.weapon.name);
             player2WeaponDamageValueElem.text(player2.weapon.damage);
         }
@@ -260,7 +239,6 @@ var Game = {
                 }
                 playerCell.classList.remove("fish");
                 break;
-
         }
         playerCell.classList.add(playerActualWeapon);
         Game.updatePlayerWeaponData(activePlayer);
@@ -269,9 +247,9 @@ var Game = {
     // Increasing player health value when he collects heart
     increaseHealth: function () {
         if (activePlayer === "player1") {
-            player1HealthValueElem.text(player1.health += energyBoostValue);
+            player1HealthValueElem.text((player1.health += energyBoostValue));
         } else {
-            player2HealthValueElem.text(player2.health += energyBoostValue);
+            player2HealthValueElem.text((player2.health += energyBoostValue));
         }
         playerCell.classList.remove("energy");
     },
@@ -288,8 +266,13 @@ var Game = {
         var repeat = true;
         while (repeat) {
             if (i <= gridXFields && i <= playerX + maximumMoveFields) {
-                checkedCell = document.querySelector("td[x='" + i + "'][y='" + playerY + "']");
-                if (checkedCell.classList.contains("obstacle") || checkedCell.classList.contains(notActivePlayer)) {
+                checkedCell = document.querySelector(
+                    "td[x='" + i + "'][y='" + playerY + "']"
+                );
+                if (
+                    checkedCell.classList.contains("obstacle") ||
+                    checkedCell.classList.contains(notActivePlayer)
+                ) {
                     repeat = false;
                 } else {
                     var cellXY = [i, playerY];
@@ -305,8 +288,13 @@ var Game = {
         var repeat = true;
         while (repeat) {
             if (i >= 1 && i >= playerX - maximumMoveFields) {
-                checkedCell = document.querySelector("td[x='" + i + "'][y='" + playerY + "']");
-                if (checkedCell.classList.contains("obstacle") || checkedCell.classList.contains(notActivePlayer)) {
+                checkedCell = document.querySelector(
+                    "td[x='" + i + "'][y='" + playerY + "']"
+                );
+                if (
+                    checkedCell.classList.contains("obstacle") ||
+                    checkedCell.classList.contains(notActivePlayer)
+                ) {
                     repeat = false;
                 } else {
                     var cellXY = [i, playerY];
@@ -322,8 +310,13 @@ var Game = {
         var repeat = true;
         while (repeat) {
             if (i <= gridYFields && i <= playerY + maximumMoveFields) {
-                checkedCell = document.querySelector("td[x='" + playerX + "'][y='" + i + "']");
-                if (checkedCell.classList.contains("obstacle") || checkedCell.classList.contains(notActivePlayer)) {
+                checkedCell = document.querySelector(
+                    "td[x='" + playerX + "'][y='" + i + "']"
+                );
+                if (
+                    checkedCell.classList.contains("obstacle") ||
+                    checkedCell.classList.contains(notActivePlayer)
+                ) {
                     repeat = false;
                 } else {
                     var cellXY = [playerX, i];
@@ -339,8 +332,13 @@ var Game = {
         var repeat = true;
         while (repeat) {
             if (i >= 1 && i >= playerY - maximumMoveFields) {
-                checkedCell = document.querySelector("td[x='" + playerX + "'][y='" + i + "']");
-                if (checkedCell.classList.contains("obstacle") || checkedCell.classList.contains(notActivePlayer)) {
+                checkedCell = document.querySelector(
+                    "td[x='" + playerX + "'][y='" + i + "']"
+                );
+                if (
+                    checkedCell.classList.contains("obstacle") ||
+                    checkedCell.classList.contains(notActivePlayer)
+                ) {
                     repeat = false;
                 } else {
                     var cellXY = [playerX, i];
@@ -356,16 +354,20 @@ var Game = {
     // Showing available movement fields on a game board for active player
     showMovementFields: function () {
         Game.playerMovementFields.forEach(function (item) {
-            var movementCell = document.querySelector("td[x='" + item[0] + "'][y='" + item[1] + "']");
-            movementCell.classList.add("highlighted");
+            var movementCell = document.querySelector(
+                "td[x='" + item[0] + "'][y='" + item[1] + "']"
+            );
+            movementCell.classList.add("box-range");
         });
     },
 
     // Hiding available movement fields on a game board when player choose destination cell
     hideMovementFields: function () {
         Game.playerMovementFields.forEach(function (item) {
-            var movementCell = document.querySelector("td[x='" + item[0] + "'][y='" + item[1] + "']");
-            movementCell.classList.remove("highlighted");
+            var movementCell = document.querySelector(
+                "td[x='" + item[0] + "'][y='" + item[1] + "']"
+            );
+            movementCell.classList.remove("box-range");
         });
     },
 
@@ -383,28 +385,36 @@ var Game = {
         fight = false;
         // Checking cell on player's right side (if it exists)
         if (playerX !== gridXFields) {
-            checkedCell = document.querySelector("td[x='" + (playerX + 1) + "'][y='" + playerY + "']");
+            checkedCell = document.querySelector(
+                "td[x='" + (playerX + 1) + "'][y='" + playerY + "']"
+            );
             if (checkedCell.classList.contains(notActivePlayer)) {
                 fight = true;
             }
         }
         // Checking cell on player's left side (if it exists)
         if (playerX !== 1) {
-            checkedCell = document.querySelector("td[x='" + (playerX - 1) + "'][y='" + playerY + "']");
+            checkedCell = document.querySelector(
+                "td[x='" + (playerX - 1) + "'][y='" + playerY + "']"
+            );
             if (checkedCell.classList.contains(notActivePlayer)) {
                 fight = true;
             }
         }
         // Checking cell under player (if it exists)
         if (playerY !== gridYFields) {
-            checkedCell = document.querySelector("td[x='" + playerX + "'][y='" + (playerY + 1) + "']");
+            checkedCell = document.querySelector(
+                "td[x='" + playerX + "'][y='" + (playerY + 1) + "']"
+            );
             if (checkedCell.classList.contains(notActivePlayer)) {
                 fight = true;
             }
         }
         // Checking cell above player (if it exists)
         if (playerY !== 1) {
-            checkedCell = document.querySelector("td[x='" + playerX + "'][y='" + (playerY - 1) + "']");
+            checkedCell = document.querySelector(
+                "td[x='" + playerX + "'][y='" + (playerY - 1) + "']"
+            );
             if (checkedCell.classList.contains(notActivePlayer)) {
                 fight = true;
             }
@@ -419,22 +429,28 @@ var Game = {
         playerCell = document.querySelector("td[class*=" + activePlayer + "]");
         playerX = Number(playerCell.getAttribute("x"));
         playerY = Number(playerCell.getAttribute("y"));
-        if (clickedCell.classList.contains("highlighted")) {
+        if (clickedCell.classList.contains("box-range")) {
             Game.hideMovementFields();
             // Move player on x
             if (clickedY === playerY) {
                 // Move player right
                 if (clickedX > playerX) {
                     while (playerX !== clickedX && fight !== true) {
-                        playerCell = document.querySelector("td[class*=" + activePlayer + "]");
+                        playerCell = document.querySelector(
+                            "td[class*=" + activePlayer + "]"
+                        );
                         playerX = Number(playerCell.getAttribute("x"));
                         if (playerCell.classList.contains("flip-image")) {
                             playerCell.classList.remove("flip-image");
                         }
                         playerCell.classList.remove(activePlayer);
-                        nextCell = document.querySelector("td[x='" + (playerX + 1) + "'][y='" + playerY + "']");
+                        nextCell = document.querySelector(
+                            "td[x='" + (playerX + 1) + "'][y='" + playerY + "']"
+                        );
                         nextCell.classList.add(activePlayer);
-                        playerCell = document.querySelector("td[class*=" + activePlayer + "]");
+                        playerCell = document.querySelector(
+                            "td[class*=" + activePlayer + "]"
+                        );
                         playerX = Number(playerCell.getAttribute("x"));
                         if (playerCell.classList.contains("weapon")) {
                             Game.changeWeapon();
@@ -447,15 +463,21 @@ var Game = {
                 } else {
                     // Move player left
                     while (playerX !== clickedX && fight !== true) {
-                        playerCell = document.querySelector("td[class*=" + activePlayer + "]");
+                        playerCell = document.querySelector(
+                            "td[class*=" + activePlayer + "]"
+                        );
                         playerX = Number(playerCell.getAttribute("x"));
                         if (playerCell.classList.contains("flip-image")) {
                             playerCell.classList.remove("flip-image");
                         }
                         playerCell.classList.remove(activePlayer);
-                        nextCell = document.querySelector("td[x='" + (playerX - 1) + "'][y='" + playerY + "']");
+                        nextCell = document.querySelector(
+                            "td[x='" + (playerX - 1) + "'][y='" + playerY + "']"
+                        );
                         nextCell.classList.add(activePlayer);
-                        playerCell = document.querySelector("td[class*=" + activePlayer + "]");
+                        playerCell = document.querySelector(
+                            "td[class*=" + activePlayer + "]"
+                        );
                         playerX = Number(playerCell.getAttribute("x"));
                         if (playerCell.classList.contains("weapon")) {
                             Game.changeWeapon();
@@ -473,15 +495,21 @@ var Game = {
                 // Move player down
                 if (playerY < clickedY) {
                     while (playerY !== clickedY && fight !== true) {
-                        playerCell = document.querySelector("td[class*=" + activePlayer + "]");
+                        playerCell = document.querySelector(
+                            "td[class*=" + activePlayer + "]"
+                        );
                         playerY = Number(playerCell.getAttribute("y"));
                         if (playerCell.classList.contains("flip-image")) {
                             playerCell.classList.remove("flip-image");
                         }
                         playerCell.classList.remove(activePlayer);
-                        nextCell = document.querySelector("td[x='" + playerX + "'][y='" + (playerY + 1) + "']");
+                        nextCell = document.querySelector(
+                            "td[x='" + playerX + "'][y='" + (playerY + 1) + "']"
+                        );
                         nextCell.classList.add(activePlayer);
-                        playerCell = document.querySelector("td[class*=" + activePlayer + "]");
+                        playerCell = document.querySelector(
+                            "td[class*=" + activePlayer + "]"
+                        );
                         playerY = Number(playerCell.getAttribute("y"));
                         if (playerCell.classList.contains("weapon")) {
                             Game.changeWeapon();
@@ -494,15 +522,21 @@ var Game = {
                 } else {
                     // Move player up
                     while (playerY !== clickedY && fight !== true) {
-                        playerCell = document.querySelector("td[class*=" + activePlayer + "]");
+                        playerCell = document.querySelector(
+                            "td[class*=" + activePlayer + "]"
+                        );
                         playerY = Number(playerCell.getAttribute("y"));
                         if (playerCell.classList.contains("flip-image")) {
                             playerCell.classList.remove("flip-image");
                         }
                         playerCell.classList.remove(activePlayer);
-                        nextCell = document.querySelector("td[x='" + playerX + "'][y='" + (playerY - 1) + "']");
+                        nextCell = document.querySelector(
+                            "td[x='" + playerX + "'][y='" + (playerY - 1) + "']"
+                        );
                         nextCell.classList.add(activePlayer);
-                        playerCell = document.querySelector("td[class*=" + activePlayer + "]");
+                        playerCell = document.querySelector(
+                            "td[class*=" + activePlayer + "]"
+                        );
                         playerY = Number(playerCell.getAttribute("y"));
                         if (playerCell.classList.contains("weapon")) {
                             Game.changeWeapon();
@@ -527,13 +561,13 @@ var Game = {
                 player2Cell.classList.remove("flip-image");
             }
             if (fight !== true) {
-                // If active player has not met other player
+                // If active player has not met the other player
                 Game.changeActivePlayer();
                 Game.createMovementFields();
                 Game.showMovementFields();
                 Game.displayPlayerTurnMessage();
             } else {
-                // If active player has met other player
+                // If active player has met the other player
                 var table = document.querySelector("table");
                 table.removeEventListener("mousedown", Game.movePlayers);
                 Game.showBattleMessage();
@@ -541,13 +575,13 @@ var Game = {
         }
     },
 
-    // Showing battle begins message
+    // Show battle begins message
     showBattleMessage: function () {
         battleMessageWrapperElem.show();
         battleMessageHide = setTimeout(Game.hideBattleMessage, 2000);
     },
 
-    // Hiding battle begins message and starting fight
+    // Hide battle begins message and start fight
     hideBattleMessage: function () {
         clearTimeout(battleMessageHide);
         battleMessageWrapperElem.hide();
@@ -582,7 +616,7 @@ var Game = {
         player2FightButtonsElem.hide();
     },
 
-    // When player 1 click attack or defend button
+    // When player 1 clicks attack or defend button
     player1FightTurn: function (event) {
         if (event.target !== event.currentTarget) {
             if (event.target.classList.contains("button-attack")) {
@@ -594,7 +628,9 @@ var Game = {
                 }
                 player1Defend = false;
                 player2.health -= damage;
-                player1FightMessageElem.text("You attacked and dealt " + damage + " points of damage");
+                player1FightMessageElem.text(
+                    "You attacked and dealt " + damage + " points of damage"
+                );
                 if (player2.health <= 0) {
                     player2HealthValueElem[0].innerHTML = 0;
                     player2FightMessageElem.text("You lost !!!");
@@ -603,7 +639,9 @@ var Game = {
                     return;
                 } else {
                     player2HealthValueElem[0].innerHTML = player2.health;
-                    player2FightMessageElem.text("You have lost " + damage + " points of health");
+                    player2FightMessageElem.text(
+                        "You have lost " + damage + " points of health"
+                    );
                 }
             } else {
                 player1Defend = true;
@@ -621,7 +659,7 @@ var Game = {
         }
     },
 
-    // When player 2 click attack or defend button
+    // When player 2 clicks attack or defend button
     player2FightTurn: function (event) {
         if (event.target !== event.currentTarget) {
             if (event.target.classList.contains("button-attack")) {
@@ -633,7 +671,9 @@ var Game = {
                 }
                 player2Defend = false;
                 player1.health -= damage;
-                player2FightMessageElem.text("You attacked and dealt " + damage + " points of damage");
+                player2FightMessageElem.text(
+                    "You attacked and dealt " + damage + " points of damage"
+                );
                 if (player1.health <= 0) {
                     player1HealthValueElem[0].innerHTML = 0;
                     player1FightMessageElem.text("You lost !!!");
@@ -642,7 +682,9 @@ var Game = {
                     return;
                 } else {
                     player1HealthValueElem[0].innerHTML = player1.health;
-                    player1FightMessageElem.text("You have lost " + damage + " points of health");
+                    player1FightMessageElem.text(
+                        "You have lost " + damage + " points of health"
+                    );
                 }
             } else {
                 player2Defend = true;
@@ -660,10 +702,16 @@ var Game = {
         }
     },
 
-    // Displaying game over message and reseting variables to start next game
+    // Displaying game over message & reset variables to start next game
     gameOver: function () {
-        player1FightButtonsElem[0].removeEventListener("click", Game.player1FightTurn);
-        player2FightButtonsElem[0].removeEventListener("click", Game.player2FightTurn);
+        player1FightButtonsElem[0].removeEventListener(
+            "click",
+            Game.player1FightTurn
+        );
+        player2FightButtonsElem[0].removeEventListener(
+            "click",
+            Game.player2FightTurn
+        );
         Game.hideFightButtons();
         player1TurnMessageElem[0].innerHTML = "";
         player2TurnMessageElem[0].innerHTML = "";
@@ -671,11 +719,11 @@ var Game = {
         if (activePlayer === "player1") {
             winnerNumberElem.text("Player 1");
             winnerNameElem.text(player1.name);
-            winnerPictureElem.html("<img src=\"img/player1.png\">");
+            winnerPictureElem.html('<img src="img/player1.png">');
         } else {
             winnerNumberElem.text("Player 2");
             winnerNameElem.text(player2.name);
-            winnerPictureElem.html("<img src=\"img/player2.png\">");
+            winnerPictureElem.html('<img src="img/player2.png">');
         }
         // When play again button is clicked
         playAgainButtonElem.on("click", function () {
@@ -691,5 +739,5 @@ var Game = {
             Game.changeActivePlayer;
             Game.init();
         });
-    }
-}
+    },
+};
